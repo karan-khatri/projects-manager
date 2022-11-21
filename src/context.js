@@ -25,13 +25,13 @@ const initialState = {
   },
 };
 
-const baseURL = 'http://localhost:5000/api/v1';
+const baseURL = 'https://projects-manager-api-react.herokuapp.com/api/v1';
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const authorizedRequest = axios.create({
-    baseURL: 'http://localhost:5000/api/v1',
+    baseURL: 'https://projects-manager-api-react.herokuapp.com/api/v1',
   });
 
   authorizedRequest.interceptors.request.use(
@@ -142,16 +142,6 @@ const AppProvider = ({ children }) => {
     }
     dispatch({ type: 'CLOSE_SNACKBAR' });
   };
-
-  // const getSingleProject = React.useCallback(async () => {
-  //   try {
-  //     const response = await authorizedRequest.get(`${state.modalProjectId}`);
-  //     const singleProject = response.data.project;
-  //     dispatch({ type: 'SET_MODAL_PROJECT', payload: singleProject });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [state.modalProjectId]);
 
   const addProject = async (project) => {
     dispatch({ type: 'LOADING_TRUE' });
