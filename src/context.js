@@ -93,7 +93,6 @@ const AppProvider = ({ children }) => {
       if (user && token) {
         addUserToLocalStorage({ user, token });
       }
-      dispatch({ type: 'LOADING_FALSE' });
     } catch (error) {
       dispatch({ type: 'LOADING_FALSE' });
       showSnackbar(error.response.data.msg, 'error');
