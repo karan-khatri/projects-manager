@@ -17,7 +17,7 @@ import { Typography } from '@mui/material';
 const ProjectsSection = () => {
   const navigate = useNavigate();
 
-  const { loading, user, token, getAllProjects, projects, projectsStatus, setProjectsStatus, sortByDate, sortByName, setSortByName, setSortByDate, searchTerm, setSearchTerm, showSnackbar } = useGlobalContext();
+  const { loading, user, token, getAllProjects, projects, projectsStatus, setProjectsStatus, sortByDate, sortByName, setSortByName, setSortByDate, searchTerm, setSearchTerm } = useGlobalContext();
 
   useEffect(() => {
     if (!(user && token)) {
