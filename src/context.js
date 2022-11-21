@@ -161,6 +161,7 @@ const AppProvider = ({ children }) => {
     try {
       await authorizedRequest.patch(`/projects/${id}`, { projectName, description, startDate, img, techStack, githubRepo, liveUrl, status });
       showSnackbar('Project updated successfully', 'success');
+      getProjects();
       dispatch({ type: 'LOADING_FALSE' });
     } catch (error) {
       showSnackbar(error.response.data.msg, 'error');

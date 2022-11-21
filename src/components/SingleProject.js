@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
@@ -28,7 +28,7 @@ const SingleProject = (project) => {
 
   const { openModal, setDialogProject } = useGlobalContext();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
