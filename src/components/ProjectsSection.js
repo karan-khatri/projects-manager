@@ -5,12 +5,14 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { useEffect } from 'react';
 import { useGlobalContext } from '../context';
 import { useNavigate } from 'react-router-dom';
 
 import SingleProject from './SingleProject';
 import Loading from './Loading';
+import { Typography } from '@mui/material';
 
 const ProjectsSection = () => {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     if (!(user && token)) {
-      showSnackbar('You must be logged in to view this page', 'error');
+      // showSnackbar('You must be logged in to view this page', 'error');
       navigate('/auth/login');
     } else {
       getAllProjects();
@@ -109,11 +111,24 @@ const ProjectsSection = () => {
         </Box>
       </Grid>
 
+      <Grid item xs={12}>
+        <Button variant='contained' color='primary' onClick={() => navigate('/dashboard/projects/new')}>
+          Add New Project
+        </Button>
+      </Grid>
+
       {loading ? (
         <Grid item xs={12}>
           <Loading />
         </Grid>
       ) : (
+        <Grid item xs={12}>
+          <Typography variant='h3' sx={{ mb: 2 }} fontWeight={600} align='center'>
+            Projects
+          </Typography>
+        </Grid>
+      )}
+      {!loading &&
         projects.map((project) => {
           const { _id: id, projectName, description, startDate, img, techStack, githubRepo, liveUrl, status } = project;
 
@@ -122,8 +137,7 @@ const ProjectsSection = () => {
               <SingleProject projectID={id} projectName={projectName} description={description} startDate={startDate} img={img} techStack={techStack} githubRepo={githubRepo} liveUrl={liveUrl} status={status} />
             </Grid>
           );
-        })
-      )}
+        })}
     </Grid>
   );
 };
