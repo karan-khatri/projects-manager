@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 
 import { useGlobalContext } from '../context';
 import { useEffect } from 'react';
+import CustomSnackbar from '../components/CustomSnackbar';
 
 const SharedLayout = () => {
   const { user, token } = useGlobalContext();
@@ -20,6 +21,7 @@ const SharedLayout = () => {
   return (
     <>
       <Navbar />
+      <CustomSnackbar />
       <Outlet />
     </>
   );

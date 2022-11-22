@@ -14,11 +14,11 @@ const Navbar = () => {
     <Container maxWidth={false} disableGutters>
       <AppBar position='static' variant='elevation' sx={{ p: 1 }}>
         <Toolbar>
-          <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+          <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1 }}>
             Projects Manager
           </Typography>
 
-          <Button variant='text' size='large' color='inherit' sx={{ mr: 1 }}>
+          <Button variant='text' size='large' color='inherit'>
             {user?.name}
           </Button>
         </Toolbar>

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -29,14 +29,20 @@ const AddNewProject = () => {
       description: descriptionRef.current.value,
       startDate: startDateRef.current.value,
       status: statusRef.current.value,
-      imgUrl: imgUrlRef.current.value,
+      img: imgUrlRef.current.value,
       techStack: techStackRef.current.value.split(', '),
       githubRepo: githubRepoRef.current.value,
       liveUrl: liveUrlRef.current.value,
     };
 
+    console.log(project);
+
     addProject(project);
   };
+
+  useEffect(() => {
+    document.title = 'Add New Project - Project Manager';
+  }, []);
 
   return (
     <Grid container justifyContent={'center'} sx={{ pt: 3 }}>

@@ -16,8 +16,7 @@ const LoginFormPage = () => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    console.log(user, token);
-    if (user && token) {
+    if (token) {
       setTimeout(() => {
         console.log(user, token);
         navigate('/dashboard/projects/current');
@@ -39,11 +38,6 @@ const LoginFormPage = () => {
     e.preventDefault();
 
     loginUser(email, password, 'login');
-
-    setTimeout(() => {
-      console.log(user, token);
-      navigate('/dashboard/projects/current');
-    }, 2000);
   };
 
   return (
@@ -52,7 +46,7 @@ const LoginFormPage = () => {
         <Box maxWidth={'md'} width='100%' sx={{ backdropFilter: 'blur(3px)', mb: 4 }}>
           <Paper component={'form'} sx={{ p: 4 }} onSubmit={handleSubmit}>
             <Typography variant={'h4'} gutterBottom>
-              Login Form
+              Sign-in Form
             </Typography>
 
             <TextField fullWidth type='email' id='txtEmail' label={'Email'} placeholder={'abc@example.com'} margin='normal' color='customBlack' onChange={handleEmailChange} />
