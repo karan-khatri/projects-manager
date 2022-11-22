@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -8,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useGlobalContext } from '../context';
 
 const Navbar = () => {
-  const { user } = useGlobalContext();
+  const { user, logoutUser } = useGlobalContext();
 
   return (
     <Container maxWidth={false} disableGutters>
@@ -18,9 +19,16 @@ const Navbar = () => {
             Projects Manager
           </Typography>
 
-          <Button variant='text' size='large' color='inherit'>
-            {user?.name}
-          </Button>
+          {user && (
+            <Box>
+              <Typography variant='button' component='span' sx={{ mr: 2 }}>
+                {user.name}
+              </Typography>
+              <Button variant='contained' size='large' color='warning' onClick={logoutUser}>
+                Logout
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
     </Container>

@@ -65,6 +65,7 @@ const AppProvider = ({ children }) => {
   const removeUserFromLocalStorage = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    dispatch({ type: 'UPDATE_USER_AND_TOKEN', payload: { user: null, token: null } });
   };
 
   const registerUser = async (name, email, password) => {
@@ -205,6 +206,7 @@ const AppProvider = ({ children }) => {
         ...state,
         registerUser,
         loginUser,
+        logoutUser,
         getAllProjects: getProjects,
         setProjectsStatus,
         setSortByDate,

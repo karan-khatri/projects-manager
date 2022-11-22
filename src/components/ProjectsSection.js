@@ -17,16 +17,16 @@ import { Typography } from '@mui/material';
 const ProjectsSection = () => {
   const navigate = useNavigate();
 
-  const { loading, user, token, getAllProjects, projects, projectsStatus, setProjectsStatus, sortByDate, sortByName, setSortByName, setSortByDate, searchTerm, setSearchTerm } = useGlobalContext();
+  const { loading, user, token, getAllProjects, projects, projectsStatus, setProjectsStatus, sortByDate, sortByName, setSortByName, setSortByDate, searchTerm, setSearchTerm, showSnackbar } = useGlobalContext();
 
   useEffect(() => {
     if (!(user && token)) {
-      // showSnackbar('You must be logged in to view this page', 'error');
+      showSnackbar('You must be logged in to view this page', 'error');
       navigate('/auth/login');
     } else {
       getAllProjects();
     }
-  }, [projectsStatus, sortByDate, sortByName, searchTerm]); // eslint-disable-line
+  }, [projectsStatus, sortByDate, sortByName, searchTerm, user, token]); // eslint-disable-line
 
   return (
     <Grid container spacing={2} sx={{ pt: 4 }}>
