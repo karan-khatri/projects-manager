@@ -89,7 +89,19 @@ const SingleProject = (project) => {
       />
       <CardMedia component='img' height='194' image={img} alt='Paella dish' />
       <CardContent>
-        <Typography variant='body2' color='text.secondary'>
+        <Typography
+          variant='body2'
+          color='text.secondary'
+          whiteSpace={'noWrap'}
+          textOverflow={'ellipsis'}
+          overflow='hidden'
+          sx={{
+            display: '-webkit-box',
+            WebkitLineClamp: '3',
+            boxOrient: 'vertical',
+            maxHeight: 40,
+          }}
+        >
           {description}
         </Typography>
       </CardContent>

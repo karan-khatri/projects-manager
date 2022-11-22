@@ -6,7 +6,7 @@ const AppContext = React.createContext();
 
 const initialState = {
   user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem('token') ? localStorage.getItem('token') : null,
   searchTerm: '',
   projectsStatus: 'current',
   projects: [],
@@ -71,11 +71,13 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'LOADING_TRUE' });
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/v1/auth/register/`, { name, email, password });
+      const response = await axios.post(`${baseURL}/auth/register/`, { name, email, password });
+      showSnackbar('User Registered Successfully!', 'success');
       const { user, token } = response.data;
       addUserToLocalStorage({ user, token });
     } catch (error) {
       console.log(error);
+      showSnackbar(error.response.data.msg, 'error');
       dispatch({ type: 'LOADING_FALSE' });
     }
   };
@@ -89,10 +91,10 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await axios.post(`${baseURL}/auth/${endPoint}`, { email, password });
+      showSnackbar('Logged in Successfully!');
       const { user, token } = response.data;
-      if (user && token) {
-        addUserToLocalStorage({ user, token });
-      }
+      console.log(user, token);
+      if (user && token) addUserToLocalStorage({ user, token });
     } catch (error) {
       dispatch({ type: 'LOADING_FALSE' });
       showSnackbar(error.response.data.msg, 'error');

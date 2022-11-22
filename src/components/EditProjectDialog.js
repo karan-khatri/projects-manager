@@ -42,7 +42,7 @@ const EditProjectDialog = () => {
       description: descriptionRef.current.value,
       startDate: startDateRef.current.value,
       status: statusRef.current.value,
-      imgUrl: imgUrlRef.current.value,
+      img: imgUrlRef.current.value,
       techStack: techStackRef.current.value.split(', '),
       githubRepo: githubRepoRef.current.value,
       liveUrl: liveUrlRef.current.value,

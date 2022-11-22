@@ -1,16 +1,19 @@
+import { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { Outlet } from 'react-router-dom';
 
 import EditProjectDialog from '../components/EditProjectDialog';
-import CustomSnackbar from '../components/CustomSnackbar';
 
 const Dashboard = () => {
+  useEffect(() => {
+    document.title = 'Dashboard - Project Manager';
+  }, []);
+
   return (
     <>
       <Container maxWidth='lg'>
         <Outlet />
         <EditProjectDialog />
-        <CustomSnackbar />
       </Container>
     </>
   );
