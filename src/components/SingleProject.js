@@ -92,21 +92,12 @@ const SingleProject = (project) => {
         <Typography
           variant='body2'
           color='text.secondary'
-<<<<<<< HEAD
-=======
-          whiteSpace={'noWrap'}
->>>>>>> b1736b25114d19402dc512ca76ae25575b28ad6a
           textOverflow={'ellipsis'}
           overflow='hidden'
           sx={{
             display: '-webkit-box',
             WebkitLineClamp: '3',
-<<<<<<< HEAD
             WebkitBoxOrient: 'vertical',
-=======
-            boxOrient: 'vertical',
-            maxHeight: 40,
->>>>>>> b1736b25114d19402dc512ca76ae25575b28ad6a
           }}
         >
           {description}
