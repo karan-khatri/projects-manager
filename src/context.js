@@ -25,13 +25,13 @@ const initialState = {
   },
 };
 
-const baseURL = 'https://projects-manager-api-react.herokuapp.com/api/v1';
+const baseURL = 'https://projects-manager-nodejs-api.onrender.com/api/v1';
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const authorizedRequest = axios.create({
-    baseURL: 'https://projects-manager-api-react.herokuapp.com/api/v1',
+    baseURL: 'https://projects-manager-nodejs-api.onrender.com/api/v1',
   });
 
   authorizedRequest.interceptors.request.use(
